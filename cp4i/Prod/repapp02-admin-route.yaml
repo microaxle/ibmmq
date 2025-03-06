@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: repapp02-admin-route
+  namespace: mq-apac
+spec:
+  host: repapp022e-adm2e-svrconn.chl.mq.ibm.com
+  to:
+    kind: Service
+    name: repapp02-ibm-mq
+  port:
+    targetPort: 1414
+  tls:
+    termination: passthrough

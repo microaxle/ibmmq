@@ -1,0 +1,26 @@
+<datapower-configuration version="3"><export-details><description>Exported Configuration</description><user>admin</user><domain>default</domain><comment>Export oms-rlap-prod - 2024_09_26-12_00_12_AM</comment><product-id>software</product-id><product>IDG</product><display-product>IDG</display-product><model>IBM DataPower Gateway</model><display-model>IBM DataPower Gateway</display-model><device-name>oms-rlap-dp-0</device-name><serial-number>0000001</serial-number><firmware-version>IDG.10.6.0.0</firmware-version><display-firmware-version>IDG.10.6.0.0</display-firmware-version><firmware-build>365335</firmware-build><delivery-type>LTS</delivery-type><firmware-timestamp>2024/06/11 11:52:53</firmware-timestamp><current-date>2024-09-25</current-date><current-time>20:00:32 EDT</current-time><reset-date>2024-09-15</reset-date><reset-time>19:30:11 EDT</reset-time><login-message/><custom-ui-file/></export-details><interface-data><interface name="eth0" type="Other" vers="ipv4" ip-addr="10.129.2.203"/><interface name="eth0" type="Other" vers="ipv6" ip-addr="fe80::858:aff:fe81:2cb"/></interface-data><configuration><Domain name="oms-rlap-prod" xmlns:dp="http://www.datapower.com/schemas/management" xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+<mAdminState>enabled</mAdminState>
+<BaseDir>local:</BaseDir>
+<BaseDir>oms-rlap-prod:</BaseDir>
+<ConfigDir>config:///</ConfigDir>
+<ConfigFile>oms-rlap-prod.cfg</ConfigFile>
+<NeighborDomain class="Domain">default</NeighborDomain>
+<URLMap>
+<http>on</http>
+<https>on</https>
+<snmp>off</snmp>
+<ftp>off</ftp>
+<mailto>off</mailto>
+<mq>off</mq></URLMap>
+<FileMap>
+<CopyFrom>on</CopyFrom>
+<CopyTo>on</CopyTo>
+<Delete>on</Delete>
+<Display>on</Display>
+<Exec>on</Exec>
+<Subdir>on</Subdir></FileMap>
+<ConfigMode>local</ConfigMode>
+<ImportFormat>ZIP</ImportFormat>
+<LocalIPRewrite>on</LocalIPRewrite>
+<MaxChkpoints>3</MaxChkpoints>
+<ConfigPermissionsMode>scope-domain</ConfigPermissionsMode></Domain></configuration><domains><domain name="oms-rlap-prod"/></domains></datapower-configuration>

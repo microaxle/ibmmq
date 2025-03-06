@@ -1,0 +1,75 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  annotations:
+    com.ibm.mq/write-defaults-spec: 'false'
+  name: aceapp01
+  namespace: mq-apac
+spec:
+  license:
+    accept: true
+    license: L-JTPV-KYG8TF
+    use: Production
+    metric: VirtualProcessorCore
+  queueManager:
+    name: ACEAPP01
+    resources:
+      limits:
+        cpu: '500m'
+        memory: 2Gi
+      requests:
+        cpu: '200m'
+        memory: 1Gi
+    storage:
+      allowVolumeExpansion: true
+      defaultDeleteClaim: false
+      queueManager:
+        type: persistent-claim
+        size: 3Gi
+      defaultClass: px-db
+    availability:
+      type: NativeHA
+      updateStrategy: RollingUpdate
+    ini:
+      - configMap:
+          items:
+            - aceapp01.ini
+          name: aceapp01-default-config
+    mqsc:
+      - configMap:
+          items:
+            - admin.mqsc
+          name: aceapp01-default-config
+    recoveryLogs:
+      logFilePages: 65535
+  version: 9.4.0.6-r1
+  web:
+    console:
+      authentication:
+        provider: integration-keycloak
+      authorization:
+        provider: integration-keycloak
+    enabled: true
+    manualConfig:
+      secret:
+        name: mq-restapi
+  pki:
+    keys:
+      - name: aceapp01keystore
+        secret:
+          items:
+            - tls.key
+            - tls.crt
+          secretName: aceapp01-keystore
+    trust:
+      - name: mqtruststore
+        secret:
+          items:
+            - mqexpo.crt
+          secretName: mq-truststore
+  telemetry:
+    tracing:
+      instana:
+        enabled: true
+        protocol: http
+

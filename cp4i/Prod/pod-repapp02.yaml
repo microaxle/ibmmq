@@ -1,0 +1,74 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  annotations:
+    com.ibm.mq/write-defaults-spec: 'false'
+  name: repapp02
+  namesprep: mq-apac
+spec:
+  license:
+    accept: true
+    license: L-JTPV-KYG8TF
+    use: Production
+    metric: VirtualProcessorCore
+  queueManager:
+    name: REPAPP02
+    resources:
+      limits:
+        cpu: '500m'
+        memory: 2Gi
+      requests:
+        cpu: '200m'
+        memory: 1Gi
+    storage:
+      allowVolumeExpansion: true
+      defaultDeleteClaim: false
+      queueManager:
+        type: persistent-claim
+        size: 2Gi
+      defaultClass: px-db
+    availability:
+      type: NativeHA
+      updateStrategy: RollingUpdate
+    ini:
+      - configMap:
+          items:
+            - repapp02.ini
+          name: repapp02-default-config
+    mqsc:
+      - configMap:
+          items:
+            - admin.mqsc
+          name: repapp02-default-config
+    recoveryLogs:
+      logFilePages: 65535
+  version: 9.4.0.6-r1
+  web:
+    console:
+      authentication:
+        provider: integration-keycloak
+      authorization:
+        provider: integration-keycloak
+    enabled: true
+    manualConfig:
+      secret:
+        name: mq-restapi
+  pki:
+    keys:
+      - name: repapp02keystore
+        secret:
+          items:
+            - tls.key
+            - tls.crt
+          secretName: repapp02-keystore
+    trust:
+      - name: mqtruststore
+        secret:
+          items:
+            - mqexpo.crt
+          secretName: mq-truststore
+  telemetry:
+    tracing:
+      instana:
+        enabled: true
+        protocol: http

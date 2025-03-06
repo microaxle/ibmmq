@@ -1,0 +1,100 @@
+{
+    "channel":
+    [
+        {
+            "name": "ACEAPP01.ADM.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "aceapp01-ibm-mq-qm-mq-apac.apps.ocp01.microaxle.lab",
+                        "port": 443
+                    }
+                ],
+                "queueManager": "ACEAPP01"
+            },
+            "transmissionSecurity":
+            {
+              "cipherSpecification": "ANY_TLS12_OR_HIGHER"
+            },
+            "type": "clientConnection"
+        },
+	{
+            "name": "MFTAPP01.ADM.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "mftapp01-ibm-mq-qm-mq-apac.apps.ocp01.microaxle.lab",
+                        "port": 443
+                    }
+                ],
+                "queueManager": "MFTAPP01"
+            },
+            "transmissionSecurity":
+            {
+              "cipherSpecification": "ANY_TLS12_OR_HIGHER"
+            },
+            "type": "clientConnection"
+        },
+	{
+            "name": "CRDAPP01.ADM.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "crdapp01-ibm-mq-qm-mq-apac.apps.ocp01.microaxle.lab",
+                        "port": 443
+                    }
+                ],
+                "queueManager": "CRDAPP01"
+            },
+            "transmissionSecurity":
+            {
+              "cipherSpecification": "ANY_TLS12_OR_HIGHER"
+            },
+            "type": "clientConnection"
+        },
+	{
+            "name": "REPAPP01.ADM.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "repapp01-ibm-mq-qm-mq-apac.apps.ocp01.microaxle.lab",
+                        "port": 443
+                    }
+                ],
+                "queueManager": "REPAPP01"
+            },
+            "transmissionSecurity":
+            {
+              "cipherSpecification": "ANY_TLS12_OR_HIGHER"
+            },
+            "type": "clientConnection"
+        },
+	{
+            "name": "REPAPP02.ADM.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "repapp02-ibm-mq-qm-mq-apac.apps.ocp01.microaxle.lab",
+                        "port": 443
+                    }
+                ],
+                "queueManager": "REPAPP02"
+            },
+            "transmissionSecurity":
+            {
+              "cipherSpecification": "ANY_TLS12_OR_HIGHER"
+            },
+            "type": "clientConnection"
+        }
+   ]
+}

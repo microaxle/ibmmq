@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mq-restapi
+type: Opaque
+stringData:
+  mqwebuser.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <server>
+        <featureManager>
+            <feature>apiDiscovery-1.0</feature>
+            <feature>appSecurity-2.0</feature>
+            <feature>basicAuthenticationMQ-1.0</feature>
+        </featureManager>
+        <enterpriseApplication id="com.ibm.mq.rest">
+            <application-bnd>
+                <security-role name="MQWebAdmin">
+                    <group name="MQWebAdminGroup" realm="defaultRealm"/>
+                </security-role>
+                <security-role name="MQWebUser">
+                    <group name=" MQWebUserGroup" realm="defaultRealm"/>
+                    <special-subject type="ALL_AUTHENTICATED_USERS"/>
+                </security-role>
+            </application-bnd>
+        </enterpriseApplication>
+        <basicRegistry id="basic" realm="defaultRealm">
+            <user name="gtmuser" password="{hash}ATAAAAAI6vxfYFpPizJAAAAAIETJIovE+oxD9u+YCCJUlNxoSKLLtWgUwFJrCZwgsqLl"/>
+            <user name="mqadmin" password="{hash}ATAAAAAIHHZAZnwE+RxAAAAAIJgCFjVwRun48IcVoA9xFGYR1gHFQuNHx7fm/IF8VS/M"/>
+            <group name="MQWebAdminGroup">
+               <member name="gtmuser"/>
+               <member name="mqadmin"/>
+            </group>
+            <group name="MQWebUserGroup">
+               <member name="gtmuser"/>
+               <member name="mqadmin"/>
+            </group>
+        </basicRegistry>
+    </server>
+
